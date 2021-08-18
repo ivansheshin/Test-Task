@@ -16,11 +16,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function animateCells() {
         const cells = document.querySelectorAll('.cells__item')
+        
         cells.forEach((item, index) => {
-
+            const animationTime = 200
+            const animationDelay = index*animationTime
             setTimeout(() => {
                 item.classList.add('cells__item_animation')
-            }, index * 200)
+            }, animationDelay)
 
             item.addEventListener('animationstart', () => {
                 showLogs(item, 'START')
