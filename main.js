@@ -8,11 +8,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     })
 
-    
-    function changeBtnState(disableState, btnText) {
+
+    function changeBtnState(isDisabled, btnText) {
 
         startButton.textContent = btnText
-        startButton.disabled = disableState
+        startButton.disabled = isDisabled
     }
 
     function animateCells() {
