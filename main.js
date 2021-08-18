@@ -3,8 +3,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const startButton = document.querySelector('.start-button')
     startButton.addEventListener('click', () => {
         changeBtnState(true, 'in progress...')
-
+        animateCells()
         blockForLogs.insertAdjacentHTML('beforeend', `<p class="log-block__message">---PROGRESS START---</p>`)
+
+    })
+
+    
+    function changeBtnState(disableState, btnText) {
+
+        startButton.textContent = btnText
+        startButton.disabled = disableState
+    }
+
+    function animateCells() {
         const cells = document.querySelectorAll('.cells__item')
         cells.forEach((item, index) => {
 
@@ -24,24 +35,19 @@ document.addEventListener('DOMContentLoaded', () => {
                     blockForLogs.insertAdjacentHTML('beforeend', `<p class="log-block__message">---PROGRESS END---</p>`)
                     changeBtnState(false, 'start')
                     blockForLogs.scrollTop = blockForLogs.scrollHeight
-                    
-                    setTimeout(()=>alert('success'),0)
+
+                    setTimeout(() => alert('success'), 0)
                 }
             }, {once: true})
 
 
 
         })
-    })
+    }
 
     function showLogs(arrayItem, animationState) {
         blockForLogs.insertAdjacentHTML('beforeend', `<p class="log-block__message">Cell ${arrayItem.textContent} Animation ${animationState}</p>`)
         blockForLogs.scrollTop = blockForLogs.scrollHeight
     }
 
-    function changeBtnState(disableState, btnText) {
-
-        startButton.textContent = btnText
-        startButton.disabled = disableState
-    }
 })
