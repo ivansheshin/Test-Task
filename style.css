@@ -1,0 +1,78 @@
+@import 'variables.css';
+@keyframes rotation {
+    0% {
+        transform: rotateX(0);
+    }
+
+    100% {
+        transform: rotateX(180deg);
+    }
+}
+
+.wrapper {
+    margin: 0 auto;
+    margin-top: 30px;
+    padding: 20px;
+    width: min-content;
+    border: 5px solid var(--border-color);
+    border-radius: var(--main-border-radius);
+    background-color: var(--background-color);
+
+}
+
+.start-button {
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+    border: none;
+    border-radius: var(--main-border-radius);
+    width: 220px;
+    height: 37px;
+    background-color: var(--secondary-background-color);
+    text-transform: uppercase;
+    font-size: 20px;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+.start-button:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+}
+
+.log-block {
+    height: 150px;
+    margin-top: 10px;
+    border: 5px solid var(--secondary-border-color);
+    border-radius: var(--main-border-radius);
+    padding: 5px;
+    overflow-y: auto;
+}
+
+.log-block__message {
+    margin: 0;
+}
+
+.cells {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.cells__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    background-color: var(--thirdly-background-color);
+    height: 75px;
+    color: var(--text-color);
+
+
+
+}
+
+.cells__item_animation {
+    animation-name: rotation;
+    animation-duration: 2s;
+}
