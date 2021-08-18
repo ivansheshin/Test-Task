@@ -3,20 +3,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const startButton = document.querySelector('.start-button')
     startButton.addEventListener('click', () => {
         startProgress()
-        animateCells()
-
     })
 
-
     function changeBtnState(isDisabled, btnText) {
-
         startButton.textContent = btnText
         startButton.disabled = isDisabled
     }
-
     function animateCells() {
         const cells = document.querySelectorAll('.cells__item')
-        
         cells.forEach((item, index) => {
             const animationTime = 200
             const animationDelay = index*animationTime
@@ -31,14 +25,10 @@ document.addEventListener('DOMContentLoaded', () => {
             item.addEventListener('animationend', () => {
                 item.classList.remove('cells__item_animation')
                 showLogs(item, 'END')
-
                 if (index === cells.length - 1) {
                    endProgress()
                 }
             }, {once: true})
-
-
-
         })
     }
 
@@ -47,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         blockForLogs.scrollTop = blockForLogs.scrollHeight
     }
     function startProgress(){
+        animateCells()
         blockForLogs.insertAdjacentHTML('beforeend', `<p class="log-block__message">---PROGRESS START---</p>`)
         changeBtnState(true, 'in progress...')
     }
