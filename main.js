@@ -2,9 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const blockForLogs = document.querySelector('.log-block')
     const startButton = document.querySelector('.start-button')
     startButton.addEventListener('click', () => {
-        changeBtnState(true, 'in progress...')
+        startProgress()
         animateCells()
-        blockForLogs.insertAdjacentHTML('beforeend', `<p class="log-block__message">---PROGRESS START---</p>`)
 
     })
 
@@ -32,11 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 showLogs(item, 'END')
 
                 if (index === cells.length - 1) {
-                    blockForLogs.insertAdjacentHTML('beforeend', `<p class="log-block__message">---PROGRESS END---</p>`)
-                    changeBtnState(false, 'start')
-                    blockForLogs.scrollTop = blockForLogs.scrollHeight
-
-                    setTimeout(() => alert('success'), 0)
+                   endProgress()
                 }
             }, {once: true})
 
@@ -48,6 +43,16 @@ document.addEventListener('DOMContentLoaded', () => {
     function showLogs(arrayItem, animationState) {
         blockForLogs.insertAdjacentHTML('beforeend', `<p class="log-block__message">Cell ${arrayItem.textContent} Animation ${animationState}</p>`)
         blockForLogs.scrollTop = blockForLogs.scrollHeight
+    }
+    function startProgress(){
+        blockForLogs.insertAdjacentHTML('beforeend', `<p class="log-block__message">---PROGRESS START---</p>`)
+        changeBtnState(true, 'in progress...')
+    }
+    function endProgress(){
+        blockForLogs.insertAdjacentHTML('beforeend', `<p class="log-block__message">---PROGRESS END---</p>`)
+        changeBtnState(false, 'start')
+        blockForLogs.scrollTop = blockForLogs.scrollHeight
+        setTimeout(() => alert('success'), 0)
     }
 
 })
